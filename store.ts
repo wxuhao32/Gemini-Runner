@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -5,7 +6,7 @@
 
 
 import { create } from 'zustand';
-import { GameStatus, RUN_SPEED_BASE } from './types';
+import { GameStatus, RUN_SPEED_BASE, Language } from './types';
 
 interface GameState {
   status: GameStatus;
@@ -18,6 +19,7 @@ interface GameState {
   laneCount: number;
   gemsCollected: number;
   distance: number;
+  language: Language;
   
   // Inventory / Abilities
   hasDoubleJump: boolean;
@@ -33,6 +35,7 @@ interface GameState {
   collectLetter: (index: number) => void;
   setStatus: (status: GameStatus) => void;
   setDistance: (dist: number) => void;
+  setLanguage: (lang: Language) => void;
   
   // Shop / Abilities
   buyItem: (type: 'DOUBLE_JUMP' | 'MAX_LIFE' | 'HEAL' | 'IMMORTAL', cost: number) => boolean;
@@ -56,6 +59,7 @@ export const useStore = create<GameState>((set, get) => ({
   laneCount: 3,
   gemsCollected: 0,
   distance: 0,
+  language: 'en',
   
   hasDoubleJump: false,
   hasImmortality: false,
@@ -112,6 +116,8 @@ export const useStore = create<GameState>((set, get) => ({
   })),
 
   setDistance: (dist) => set({ distance: dist }),
+
+  setLanguage: (lang) => set({ language: lang }),
 
   collectLetter: (index) => {
     const { collectedLetters, level, speed } = get();

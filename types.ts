@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -50,11 +51,37 @@ export const GEMINI_COLORS = [
     '#ff1744', // I - Red
 ];
 
+export type Language = 'en' | 'zh';
+
 export interface ShopItem {
     id: string;
-    name: string;
-    description: string;
     cost: number;
     icon: any; // Lucide icon component
     oneTime?: boolean; // If true, remove from pool after buying
+}
+
+// Global type augmentation to fix React Three Fiber intrinsic element errors
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      ambientLight: any;
+      pointLight: any;
+      directionalLight: any;
+      group: any;
+      mesh: any;
+      points: any;
+      bufferGeometry: any;
+      bufferAttribute: any;
+      pointsMaterial: any;
+      planeGeometry: any;
+      meshBasicMaterial: any;
+      shaderMaterial: any;
+      sphereGeometry: any;
+      fog: any;
+      color: any;
+      instancedMesh: any;
+      octahedronGeometry: any;
+      meshStandardMaterial: any;
+    }
+  }
 }

@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -111,11 +112,16 @@ export const Player: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (status !== GameStatus.PLAYING) return;
       const maxLane = Math.floor(laneCount / 2);
+      const key = e.key.toLowerCase();
 
-      if (e.key === 'ArrowLeft') setLane(l => Math.max(l - 1, -maxLane));
-      else if (e.key === 'ArrowRight') setLane(l => Math.min(l + 1, maxLane));
-      else if (e.key === 'ArrowUp' || e.key === 'w') triggerJump();
-      else if (e.key === ' ' || e.key === 'Enter') {
+      // Support Arrow Keys and WASD
+      if (key === 'arrowleft' || key === 'a') {
+          setLane(l => Math.max(l - 1, -maxLane));
+      } else if (key === 'arrowright' || key === 'd') {
+          setLane(l => Math.min(l + 1, maxLane));
+      } else if (key === 'arrowup' || key === 'w') {
+          triggerJump();
+      } else if (key === ' ' || key === 'enter') {
           activateImmortality();
       }
     };

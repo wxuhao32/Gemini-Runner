@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -69,7 +70,7 @@ function Scene() {
 
 function App() {
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden select-none">
+    <div className="relative w-full h-[100dvh] bg-black overflow-hidden select-none touch-none">
       <HUD />
       <Canvas
         shadows
